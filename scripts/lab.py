@@ -10,7 +10,7 @@ def callback():
     kit.servo[servo_right].angle=lab.servo3
 
 def servo_listener():
-    rospy.init_node('listener',anonymous=True)
+    rospy.init_node('lab_servos',anonymous=True)
     rospy.Subscriber('arm_lab',arm_lab,callback)
     rospy.spin()
 
