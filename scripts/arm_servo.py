@@ -10,8 +10,8 @@ def servo_arm(data):
     print ("entre a callback")
     #kit.servo[servo_dos].angle= data.data
     if (data.data >= -90 and data.data <= 90):
-        kit.servo[servo_dos].angle=int(map(data.data, -90, 90, 236, 416))
-        kit.servo[servo_dos].duty_cycle = 0
+        kit.servo[servo_arm].angle=int(map(data.data, -90, 90, 236, 416))
+        kit.servo[servo_arm].duty_cycle = 0
     
 def listener():
     rospy.init_node('arm_servo', anonymous=True)
