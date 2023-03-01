@@ -1,27 +1,35 @@
+#!usr/bin/env python3
 import rospy
-from lab_arm.msg import arm_lab,joint1,joint2
+from servos.msg import arm_lab
 from adafruit_servokit import ServoKit
 import time
-
-def callback():
+from std_msgs.msg import Int32 
+def callback(lab):
     global servo_center,servo_left,servo_right,joint3_b
-    lab = arm_lab()
-    kit.servo[servo_left].angle=lab.servo1
-    kit.servo[servo_center].angle=lab.servo2
-    kit.servo[servo_right].angle=lab.servo3
-    kit.servo[joint3_b].angle=lab.joint3
+    print(lab)
+    #kit.servo[servo_left].angle=lab.servo1
+    #kit.servo[servo_center].angle=lab.servo2
+    #kit.servo[servo_right].angle=lab.servo3
+    kit.servo[joint3_b].angle=lab.data
+
+def callback2(lab):
+    global servo_right
+    print("AAAAAAAAA")
+    print(lab)
+    kit.servo[servo_right].angle=lab.data
 
 def servo_listener():
     rospy.init_node('lab_servos',anonymous=True)
-    rospy.Subscriber('arm_lab',arm_lab,callback)
+    rospy.Subscriber('/arm_lab/joint3',Int32,callback)
+    rospy.Subscriber('/servo_right',Int32,callback2)   
     rospy.spin()
 
 if __name__ == '__main__':
     kit = ServoKit(channels=16)
-    servo_left = 4
-    servo_center = 5
-    servo_right = 6
-    joint3_b = 7
+    servo_left = 8
+    servo_center = 7
+    servo_right = 5
+    joint3_b = 4
     kit.servo[servo_left].actuation_range=180
     kit.servo[servo_center].actuation_range=180
     kit.servo[servo_right].actuation_range=180
