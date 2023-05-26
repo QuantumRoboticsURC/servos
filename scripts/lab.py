@@ -17,11 +17,23 @@ def callback2(lab):
     print("AAAAAAAAA")
     print(lab)
     kit.servo[servo_right].angle=lab.data
+def callback3(lab):
+    global servo_center
+    print("AAAAAAAAA")
+    print(lab)
+    kit.servo[servo_center].angle=lab.data
+def callback4(lab):
+    global servo_left
+    print("AAAAAAAAA")
+    print(lab)
+    kit.servo[servo_left].angle=lab.data
 
 def servo_listener():
     rospy.init_node('lab_servos',anonymous=True)
     rospy.Subscriber('/arm_lab/joint3',Int32,callback)
     rospy.Subscriber('/servo_right',Int32,callback2)   
+    rospy.Subscriber('/servo_center',Int32,callback3)
+    rospy.Subscriber('/servo_left',Int32,callback4)      
     rospy.spin()
 
 if __name__ == '__main__':

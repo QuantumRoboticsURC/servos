@@ -27,7 +27,7 @@ def listener():
 if __name__ == '__main__':
     print("Enter main")
     kit = ServoKit(channels=16)
-    servo_cero = 4
+    servo_cero = 7
     kit.servo[servo_cero].set_pulse_width_range(1000,2000)
     kit.servo[servo_cero].actuation_range=180
     listener()
