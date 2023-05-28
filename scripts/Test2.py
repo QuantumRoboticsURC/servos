@@ -8,10 +8,11 @@ kit.servo[s].set_pulse_width_range(500, 2400)
 kit.servo[s].actuation_range=642
 state = True
 while state:
-    angle = int(input("Ingrese el ángulo: "))
+    angle = int(input("Ingrese el ángulo"))
     kit.servo[s].angle = angle
-    if(int(input("¿Quiere seguir? 1/0: "))==0):
+    if(int(input("¿Quiere seguir? 1/0"))==0):
         state=False
+
 
 
 

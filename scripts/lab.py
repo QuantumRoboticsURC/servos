@@ -7,9 +7,9 @@ from std_msgs.msg import Int32
 def callback(lab):
     global servo_center,servo_left,servo_right,joint3_b
     print(lab)
-    #kit.servo[servo_left].angle=lab.servo1
-    #kit.servo[servo_center].angle=lab.servo2
-    #kit.servo[servo_right].angle=lab.servo3
+ #   kit.servo[servo_left].angle=lab.servo1
+#    kit.servo[servo_center].angle=lab.servo2
+  #  kit.servo[servo_right].angle=lab.servo3
     kit.servo[joint3_b].angle=lab.data
 
 def callback2(lab):
